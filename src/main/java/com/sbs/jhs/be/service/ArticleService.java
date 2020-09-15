@@ -33,4 +33,9 @@ public class ArticleService {
 		articleDao.modifyArticle(param);
 	}
 
+	public void deleteArticle(int id) {
+		articleDao.deleteArticle(id);
+		
+	}
+
 }
