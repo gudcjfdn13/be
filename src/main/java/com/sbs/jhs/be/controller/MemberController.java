@@ -40,10 +40,17 @@ public class MemberController {
 		return new ResultData("S-1", String.format("총 %d개의 회원 입니다.", members.size()), "members", members);
 	}
 
-	@RequestMapping("/usr/member/getMember")
+	@RequestMapping("/usr/member/getMember") 
 	@ResponseBody
 	public ResultData getMember(int id) {
 		Member member = memberService.getMember(id);
 		return new ResultData("S-1", String.format("%d번 회원입니다.", id), "member", member);
+	}
+	
+	@RequestMapping("/usr/member/doJoin")
+	@ResponseBody
+	public ResultData doJoin(@RequestParam Map<String, Object> param) {
+		int id = memberService.join(param);
+		return new ResultData("S-1", id + "번 회원이 생성되었습니다.", "id", id);
 	}
 }
