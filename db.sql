@@ -101,4 +101,14 @@ WHERE boardId = 0;
 ALTER TABLE `article` ADD INDEX (`boardId`); 
 
 # 회원의 authKey 칼럼 추가
-ALTER TABLE `member` ADD COLUMN `authKey` VARCHAR(100) NULL AFTER `nickname`; 
+ALTER TABLE `member` ADD COLUMN `authKey` VARCHAR(100) NOT NULL AFTER `nickname`; 
+
+# 기존에 가입된, 인증키가 없는 분들 처리
+UPDATE `member`
+SET authKey = id
+WHERE authKey = '';
+
+SELECT * FROM `member`;
+
+# 검색을 빠르게 하기 위해, char형으로 변경, INDEX 추가
+ALTER TABLE `member` CHANGE `authKey` `authKey` CHAR(100) NOT NULL, ADD KEY `authKey` (`authKey`);

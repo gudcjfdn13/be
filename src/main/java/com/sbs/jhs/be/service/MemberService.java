@@ -33,8 +33,16 @@ public class MemberService {
 	}
 
 	private String getNewAuthKey() {
-		
+
 		return UUID.randomUUID().toString();
+	}
+
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+	}
+
+	public Member getMemberByLoginAuthKey(String loginAuthKey) {
+		return memberDao.getMemberByLoginAuthKey(loginAuthKey);
 	}
 
 }

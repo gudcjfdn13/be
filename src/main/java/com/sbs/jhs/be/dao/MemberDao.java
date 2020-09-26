@@ -15,4 +15,8 @@ public interface MemberDao {
 	Member getMember(@Param("id") int id);
 
 	void join(Map<String, Object> param);
+
+	Member getMemberByLoginId(@Param("loginId")String loginId);
+
+	Member getMemberByLoginAuthKey(@Param("loginAuthKey") String loginAuthKey);
 }

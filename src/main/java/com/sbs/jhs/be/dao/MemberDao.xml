@@ -19,15 +19,27 @@
 		=
 		#{id}
 	</select>
-	
+
+	<select id="getMemberByLoginId" resultType="Member">
+		SELECT *
+		FROM member
+		WHERE loginId = #{loginId}
+	</select>
+
+	<select id="getMemberByLoginAuthKey" resultType="Member">
+		SELECT *
+		FROM member
+		WHERE authKey = #{loginAuthKey}
+	</select>
+
 	<insert id="join" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO member
-        SET regDate = NOW(),
-        updateDate = NOW(),
-        `loginId` = #{loginId},
-        `loginPw` = #{loginPw},
-        `name` = #{name},
-        `nickname` = #{nickname}, 
-        `authKey` = #{authKey}
-    </insert>
+		INSERT INTO member
+		SET regDate = NOW(),
+		updateDate = NOW(),
+		`loginId` = #{loginId},
+		`loginPw` = #{loginPw},
+		`name` = #{name},
+		`nickname` = #{nickname},
+		`authKey` = #{authKey}
+	</insert>
 </mapper>
